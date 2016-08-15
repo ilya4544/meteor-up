@@ -29,6 +29,8 @@ if [ "$USE_LOCAL_MONGO" == "1" ]; then
     --restart=always \
     --publish=$PORT:80 \
     --volume=$BUNDLE_PATH:/bundle \
+    --volume=/opt/cvpicker/storage:/cvpicker/storage \
+    --volume=kmsvideo:/cvpicker/kmsvideo \
     --env-file=$ENV_FILE \
     --link=mongodb:mongodb \
     --hostname="$HOSTNAME-$APPNAME" \
@@ -41,6 +43,8 @@ else
     --restart=always \
     --publish=$PORT:80 \
     --volume=$BUNDLE_PATH:/bundle \
+    --volume=/opt/cvpicker/storage:/cvpicker/storage \
+    --volume=kmsvideo:/cvpicker/kmsvideo \
     --hostname="$HOSTNAME-$APPNAME" \
     --env-file=$ENV_FILE \
     --name=$APPNAME \
